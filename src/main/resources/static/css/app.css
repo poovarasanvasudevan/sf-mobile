@@ -1,0 +1,51 @@
+#login-btn {
+    color: #FFFFFF !important;
+}
+
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%
+}
+.content.app {
+    padding-top: 50px;
+}
+
+.white-color-text {
+    color: white !important;
+}
+
+.txt-full-width {
+    max-width: 100% !important;
+}
+
+.padding30 {
+    padding: 30px;
+}
+
+.border-right {
+    border-right: 0.5px solid #cccccc;
+}
+.full-height {
+    height: 100%;
+}
+
+.float-right {
+    float: right;
+}
+.full-width {
+    max-width: unset !important;
+}
+
+
+@media screen and (min-width: 0) and (max-width: 767px) {
+    .padding0sm {
+        padding: 8px 40px;
+    }
+}
+.breadcrump123 {
+    border-bottom: 1px solid #dadada;
+    padding: 10px 15px
+}
+
+

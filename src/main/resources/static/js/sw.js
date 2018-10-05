@@ -10,6 +10,7 @@ self.addEventListener('install', function (e) {
             return cache.addAll([
                 '/',
                 '/js/jquery.js',
+                '/js/lodash.js',
                 '/js/angular.min.js',
                 '/js/angular-animate.min.js',
                 '/js/angular-aria.min.js',

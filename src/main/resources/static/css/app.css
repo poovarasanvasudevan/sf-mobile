@@ -48,4 +48,6 @@
     padding: 10px 15px
 }
 
-
+md-dialog.md-default-theme, md-dialog {
+    border-radius: 2px !important;
+}

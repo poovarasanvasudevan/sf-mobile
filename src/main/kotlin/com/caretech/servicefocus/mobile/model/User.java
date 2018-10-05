@@ -1,5 +1,8 @@
 package com.caretech.servicefocus.mobile.model;
 
+import com.caretech.servicefocus.mobile.core.jpa.HStoreType;
+import org.hibernate.annotations.Type;
+import org.hibernate.annotations.TypeDef;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.security.core.GrantedAuthority;
@@ -9,9 +12,11 @@ import javax.persistence.*;
 import javax.validation.constraints.Email;
 import java.util.Collection;
 import java.util.Date;
+import java.util.Map;
 
 @Entity
 @Table(name = "SYS_USER")
+@TypeDef(name = "hstore", typeClass = HStoreType.class)
 public class User implements UserDetails {
 
     @Id
@@ -42,6 +47,18 @@ public class User implements UserDetails {
 
     @LastModifiedDate
     private Date modifiedDate;
+
+    @Column(name = "attrs")
+    @Type(type = "hstore")
+    private Map<String, Object> attributes;
+
+    public Map<String, Object> getAttributes() {
+        return attributes;
+    }
+
+    public void setAttributes(Map<String, Object> attributes) {
+        this.attributes = attributes;
+    }
 
     public Date getModifiedDate() {
         return modifiedDate;

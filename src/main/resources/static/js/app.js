@@ -21,7 +21,7 @@ myApp.config(function ($mdThemingProvider) {
         'A400': '0052CC',
         'A700': '0052CC',
         'contrastDefaultColor': 'dark',    // whether, by default, text (contrast)
-                                            // on this palette should be dark or light
+        // on this palette should be dark or light
 
         'contrastDarkColors': ['50', '100', //hues which contrast should be 'dark' by default
             '200', '300', '400', 'A100'],
@@ -33,22 +33,47 @@ myApp.config(function ($mdThemingProvider) {
         .primaryPalette('appPallete')
 
 })
+myApp.directive('textfield', function () {
+
+    return {
+        restrict: 'E',
+        scope: false,
+        replace: true,
+        link: function ($scope, element, attributes) {
+            $scope.ukey = _.random(999999)
+            _.forEach(attributes, function (v, k) {
+                $scope[k] = v
+            })
+        },
+        templateUrl: '/template/textfield.html'
+    }
+})
+
 
 myApp.controller('indexcontroller', function ($scope) {
 
 })
 
+
 myApp.controller('appbarcontroller', function ($scope, $mdDialog) {
+
+    function DialogController($scope, $mdDialog) {
+        $scope.closeDialog = function () {
+            $mdDialog.hide()
+        }
+    }
 
     $scope.newLayoutClick = function (ev) {
         $mdDialog.show({
             templateUrl: '/template/newformdialog.html',
             parent: angular.element(document.body),
-            clickOutsideToClose: true
+            clickOutsideToClose: false,
+            controller: DialogController
         }).then(function (answer) {
 
         }, function () {
 
         })
+        //$('#newbuttondt').toggleClass('adg-dropdown__content--active')
     }
 })

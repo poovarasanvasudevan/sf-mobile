@@ -83,6 +83,7 @@
 
 
 <script src="{{ request.contextPath }}/js/jquery.js"></script>
+<script src="{{ request.contextPath }}/js/lodash.js"></script>
 <script src="{{ request.contextPath }}/js/angular.min.js"></script>
 <script src="{{ request.contextPath }}/js/angular-animate.min.js"></script>
 <script src="{{ request.contextPath }}/js/angular-aria.min.js"></script>

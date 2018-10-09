@@ -6,7 +6,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "SYS_ROLE")
-public class Role implements GrantedAuthority {
+public class Role extends Base implements GrantedAuthority {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

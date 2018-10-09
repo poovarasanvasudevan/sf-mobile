@@ -1,8 +1,6 @@
 package com.caretech.servicefocus.mobile.model;
 
-import com.caretech.servicefocus.mobile.core.jpa.HStoreType;
 import org.hibernate.annotations.Type;
-import org.hibernate.annotations.TypeDef;
 import org.hibernate.annotations.Where;
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
@@ -11,13 +9,13 @@ import org.springframework.data.annotation.LastModifiedDate;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Map;
 
 @Entity
 @Table(name = "SYS_SCHEMA")
 @Where(clause = "isActive ='true'")
-@TypeDef(name = "hstore", typeClass = HStoreType.class)
-public class Schema {
+public class Schema extends Base{
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -31,9 +29,9 @@ public class Schema {
     private
     String tableName;
 
-    @Column(name = "attrs")
-    @Type(type = "hstore")
-    private Map<String, Object> attributes;
+    @Type(type = "jsonb")
+    @Column(columnDefinition = "jsonb",name = "attrs")
+    private Map<String, Object> attributes=  new HashMap<String, Object>();
 
     @Column
     private

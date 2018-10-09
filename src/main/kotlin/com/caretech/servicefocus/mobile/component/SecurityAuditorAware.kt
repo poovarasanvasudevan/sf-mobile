@@ -7,14 +7,13 @@ import org.springframework.stereotype.Component
 import java.util.*
 
 @Component
-class SecurityAuditorAware : AuditorAware<Long> {
+class SecurityAuditorAware : AuditorAware<User> {
 
-    override fun getCurrentAuditor(): Optional<Long> {
+    override fun getCurrentAuditor(): Optional<User> {
         val authentication = SecurityContextHolder.getContext().authentication
 
         return if (authentication == null || !authentication.isAuthenticated) {
             Optional.empty()
-        } else Optional.of((authentication.principal as User).id!!)
-
+        } else Optional.of(authentication.principal as User)
     }
 }

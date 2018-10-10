@@ -8,8 +8,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
+import java.time.ZonedDateTime;
 import java.util.Collection;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -41,14 +41,14 @@ public class User extends Base implements UserDetails {
     private Boolean isActive;
 
     @CreatedDate
-    private Date createdDate;
+    private ZonedDateTime createdDate;
 
     @LastModifiedDate
-    private Date modifiedDate;
+    private ZonedDateTime modifiedDate;
 
     @Type(type = "jsonb")
-    @Column(columnDefinition = "jsonb",name = "attrs")
-    private Map<String, Object> attributes =  new HashMap<String, Object>();
+    @Column(columnDefinition = "jsonb", name = "attrs")
+    private Map<String, Object> attributes = new HashMap<String, Object>();
 
     public Map<String, Object> getAttributes() {
         return attributes;
@@ -58,11 +58,11 @@ public class User extends Base implements UserDetails {
         this.attributes = attributes;
     }
 
-    public Date getModifiedDate() {
+    public ZonedDateTime getModifiedDate() {
         return modifiedDate;
     }
 
-    public void setModifiedDate(Date modifiedDate) {
+    public void setModifiedDate(ZonedDateTime modifiedDate) {
         this.modifiedDate = modifiedDate;
     }
 
@@ -118,11 +118,11 @@ public class User extends Base implements UserDetails {
         this.lastName = lastName;
     }
 
-    public Date getCreatedDate() {
+    public ZonedDateTime getCreatedDate() {
         return createdDate;
     }
 
-    public void setCreatedDate(Date createdDate) {
+    public void setCreatedDate(ZonedDateTime createdDate) {
         this.createdDate = createdDate;
     }
 
@@ -160,4 +160,5 @@ public class User extends Base implements UserDetails {
     public boolean isEnabled() {
         return this.isActive;
     }
+
 }

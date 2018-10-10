@@ -1,17 +1,56 @@
-<md-dialog aria-label="Mango (Fruit)" flex="40" class="padding30">
+<md-dialog aria-label="Mango (Fruit)" flex="35">
     <form ng-cloak>
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h2 class="white-color-text"><i class="zmdi zmdi-calendar-note"></i> &nbsp;New Schema</h2>
+                <span flex></span>
+                <md-button class="md-icon-button white-color-text" ng-click="closeDialog()">
+                    <md-icon class="zmdi zmdi-close white-color-text" aria-label="Close dialog"></md-icon>
+                </md-button>
+            </div>
+        </md-toolbar>
+
 
         <md-dialog-content>
-            <div class="md-dialog-content">
-                <h2>Update Your Information</h2>
+            <div class="md-dialog-content padding30">
                 <form class="">
                     <div class="row">
-                        <div class="col-md-6 padding30">
-                            <textfield label="FirstName" id="firstName" placeholder="eg: John" name="firstName"></textfield>
-                            <textfield label="Email" id="email" placeholder="eg: john@smith.com" name="email"></textfield>
+                        <div class="col-md-12">
+                            <textfield label="Schema Name"
+                                       id="schemaName"
+                                       ng-focus
+                                       placeholder="eg: ServiceRequest"
+                                       name="schemaName"></textfield>
                         </div>
-                        <div class="col-md-6 padding30">
-                            <textfield label="Last Name" id="lastName" placeholder="eg: Smith" name="lastName"></textfield>
+
+                        <div class="col-md-12">
+                            <fieldset class="ak-field-group">
+                                <legend>
+                                    <span class="lb-font">Schema options</span>
+                                </legend>
+                                <div style="margin-top: 30px;
+                                            margin-left: 15px;
+                                            margin-right: 15px;">
+
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <md-checkbox>Hidden Table</md-checkbox>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <md-checkbox>Auditable</md-checkbox>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <md-checkbox>Backup Table</md-checkbox>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <md-checkbox>Rest Callable</md-checkbox>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <md-checkbox>Search Indexes</md-checkbox>
+                                        </div>
+                                    </div>
+                                </div>
+                            </fieldset>
                         </div>
                     </div>
                 </form>

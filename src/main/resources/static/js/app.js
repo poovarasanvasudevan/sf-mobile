@@ -20,17 +20,18 @@ myApp.config(function ($mdThemingProvider) {
         'A200': '0052CC',
         'A400': '0052CC',
         'A700': '0052CC',
-        'contrastDefaultColor': 'dark',    // whether, by default, text (contrast)
+        'contrastDefaultColor': 'light',    // whether, by default, text (contrast)
         // on this palette should be dark or light
 
         'contrastDarkColors': ['50', '100', //hues which contrast should be 'dark' by default
             '200', '300', '400', 'A100'],
-        'contrastLightColors': 'dark'    // could also specify this if default was 'dark'
+        'contrastLightColors': 'light'    // could also specify this if default was 'dark'
     })
 
     $mdThemingProvider
         .theme('default')
         .primaryPalette('appPallete')
+        .accentPalette('appPallete');
 
 })
 myApp.directive('textfield', function () {

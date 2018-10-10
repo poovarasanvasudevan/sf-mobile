@@ -26,5 +26,6 @@ public class Base {
     @Version
     private Integer version;
 
+
     //Getters and setters omitted for brevity
 }

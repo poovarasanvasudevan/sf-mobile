@@ -22,7 +22,9 @@
 .padding30 {
     padding: 30px;
 }
-
+.lb-font {
+    font-size: 15px !important;
+}
 .border-right {
     border-right: 0.5px solid #cccccc;
 }

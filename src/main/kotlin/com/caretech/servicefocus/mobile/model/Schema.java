@@ -1,7 +1,6 @@
 package com.caretech.servicefocus.mobile.model;
 
 import org.hibernate.annotations.Type;
-import org.hibernate.annotations.Where;
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedBy;
@@ -14,20 +13,17 @@ import java.util.Map;
 
 @Entity
 @Table(name = "SYS_SCHEMA")
-@Where(clause = "isActive ='true'")
 public class Schema extends Base{
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
     @Column(unique = true)
-    private
-    String schemaName;
+    private String schemaName;
 
     @Column
-    private
-    String tableName;
+    private String tableName;
 
     @Type(type = "jsonb")
     @Column(columnDefinition = "jsonb",name = "attrs")
@@ -39,12 +35,12 @@ public class Schema extends Base{
 
     @LastModifiedBy
     @OneToOne(fetch = FetchType.LAZY, optional = true)
-    @JoinColumn(name = "id", nullable = true)
+    @JoinColumn(name = "modified_by", nullable = true)
     private User modifiedBy;
 
     @CreatedBy
-    @OneToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "id", nullable = false)
+    @OneToOne(fetch = FetchType.LAZY, optional = true)
+    @JoinColumn(name = "created_by", nullable = true)
     private User createdBy;
 
     @LastModifiedDate

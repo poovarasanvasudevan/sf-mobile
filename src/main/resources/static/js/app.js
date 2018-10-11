@@ -31,7 +31,7 @@ myApp.config(function ($mdThemingProvider) {
     $mdThemingProvider
         .theme('default')
         .primaryPalette('appPallete')
-        .accentPalette('appPallete');
+        .accentPalette('appPallete')
 
 })
 myApp.directive('textfield', function () {
@@ -56,12 +56,22 @@ myApp.controller('indexcontroller', function ($scope) {
 })
 
 
-myApp.controller('appbarcontroller', function ($scope, $mdDialog) {
+myApp.controller('appbarcontroller', function ($scope, $mdDialog, $http) {
 
-    function DialogController($scope, $mdDialog) {
+    function DialogController($scope, $mdDialog, $http) {
         $scope.closeDialog = function () {
             $mdDialog.hide()
         }
+
+        $http({
+            method: 'GET',
+            url: "/core/list",
+            data: {key: "NEW_SCHEMA_ATTR"}
+        }).then(function (response) {
+            $scope['newschemaproperties'] = response.data
+        }, function (response) {
+
+        })
     }
 
     $scope.newLayoutClick = function (ev) {

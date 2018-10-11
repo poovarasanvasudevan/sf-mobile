@@ -49,3 +49,12 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
+
+
+CREATE TABLE sys_list
+(
+  id serial,
+  keycolumn text NOT NULL UNIQUE ,
+  valuecolumn jsonb,
+  created_date timestamp DEFAULT current_timestamp
+)

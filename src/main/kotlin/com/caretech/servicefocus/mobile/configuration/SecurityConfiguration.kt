@@ -39,6 +39,7 @@ class SecurityConfiguration : WebSecurityConfigurerAdapter() {
     override fun authenticationManagerBean(): AuthenticationManager {
         return super.authenticationManagerBean()
     }
+
     @Bean
     fun passwordEncoder(): PasswordEncoder {
         return Argon2PasswordEncoder()
@@ -47,7 +48,8 @@ class SecurityConfiguration : WebSecurityConfigurerAdapter() {
     @Autowired
     @Throws(Exception::class)
     fun globalUserDetails(auth: AuthenticationManagerBuilder) {
-        auth.userDetailsService(userDetailsService)
+        auth
+                .userDetailsService(userDetailsService)
                 .passwordEncoder(passwordEncoder())
     }
 
@@ -72,14 +74,14 @@ class SecurityConfiguration : WebSecurityConfigurerAdapter() {
                     .logoutSuccessUrl("/login?logout=true")
                     .invalidateHttpSession(true)
                     .permitAll()
-
                     .and()
+
                     .sessionManagement()
                     .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-
                     .and()
+
                     .csrf()
-                    .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse());
+                    .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
 
             http
                     .requiresChannel()
@@ -87,7 +89,7 @@ class SecurityConfiguration : WebSecurityConfigurerAdapter() {
                     .requiresSecure()
             http
                     .csrf()
-                    .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse());
+                    .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
             // http.authorizeRequests().antMatchers("/").permitAll()
         }
     }
@@ -102,7 +104,7 @@ class SecurityConfiguration : WebSecurityConfigurerAdapter() {
         config.addAllowedMethod("*")
         source.registerCorsConfiguration("/**", config)
         val bean = FilterRegistrationBean(CorsFilter(source))
-        bean.setOrder(0)
+        bean.order = 0
         return bean
     }
 }
